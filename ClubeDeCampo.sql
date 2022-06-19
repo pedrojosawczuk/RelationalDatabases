@@ -45,7 +45,16 @@ CREATE TABLE tb_local_socio (
   CONSTRAINT fk_local_socioXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 
-CREATE TABLE tb_medico
+CREATE TABLE tb_medico (
+  cod_medico NUMBER(6,0) NOT NULL,
+  nome VARCHAR2(45) NOT NULL,
+  endereco VARCHAR2(40) NOT NULL,
+  e_mail VARCHAR2(150) NOT NULL,
+  celular VARCHAR2(19) NOT NULL,
+  cod_cidade NUMBER(6,0) NOT NULL,
+  CONSTRAINT pk_medico PRIMARY KEY (cod_medico),
+  CONSTRAINT fk_medicoXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
+);
 
 CREATE TABLE tb_mensalidade
 
