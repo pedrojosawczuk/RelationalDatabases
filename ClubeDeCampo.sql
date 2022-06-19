@@ -8,7 +8,20 @@ CREATE TABLE tb_cidade (
   CONSTRAINT fk_cidadeXestado FOREIGN KEY (cod_estado) REFERENCES tb_estado (cod_estado)
 );
 
-CREATE TABLE tb_conta_receber
+CREATE TABLE tb_conta_receber (
+  cod_conta_receber NUMBER(6,0) NOT NULL,
+  cod_socio NUMBER(6,0) NOT NULL,
+  cod_local_socio NUMBER(6,0),
+  dt_emissao DATE NOT NULL,
+  dt_vencimento DATE NOT NULL,
+  dt_pagamento DATE,
+  val_original NUMBER(9,2) NOT NULL,
+  val_titulo NUMBER(9,2) NOT NULL,
+  ind_situacao CHAR(1) DEFAULT 'A',
+  CONSTRAINT pk_conta_receber PRIMARY KEY (cod_conta_receber),
+  CONSTRAINT fk_conta_receberXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
+  CONSTRAINT fk_conta_receberXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio)
+);
 
 CREATE TABLE tb_convidado
 
