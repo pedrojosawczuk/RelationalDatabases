@@ -5,7 +5,7 @@ CREATE TABLE tb_cidade (
   desc_cidade VARCHAR2(45) NOT NULL,
   cod_estado CHAR(2) NOT NULL,
   CONSTRAINT pk_cidade PRIMARY KEY (cod_cidade),
-  CONSTRAINT fk_estado FOREIGN KEY (cod_estado) REFERENCES tb_estado (cod_estado)
+  CONSTRAINT fk_cidadeXestado FOREIGN KEY (cod_estado) REFERENCES tb_estado (cod_estado)
 );
 
 CREATE TABLE tb_conta_receber
@@ -41,8 +41,8 @@ CREATE TABLE tb_local_socio (
   desc_observacao VARCHAR2(200),
   ind_situacao CHAR(1) DEFAULT 'A',
   CONSTRAINT pk_local_socio PRIMARY KEY (cod_local_socio),
-  CONSTRAINT fk_local FOREIGN KEY (cod_local) REFERENCES tb_local (cod_local),
-  CONSTRAINT fk_socio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+  CONSTRAINT fk_local_socioXlocal FOREIGN KEY (cod_local) REFERENCES tb_local (cod_local),
+  CONSTRAINT fk_local_socioXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 
 CREATE TABLE tb_medico
@@ -65,8 +65,8 @@ CREATE TABLE tb_socio (
   ind_situacao CHAR(1) DEFAULT 'A',
   cep VARCHAR2(10),
   CONSTRAINT pk_socio PRIMARY KEY (cod_socio),
-  CONSTRAINT fk_tipo_titulo FOREIGN KEY (cod_tipo_titulo) REFERENCES tb_tipo_titulo (cod_tipo_titulo),
-  CONSTRAINT fk_cidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
+  CONSTRAINT fk_socioXtipo_titulo FOREIGN KEY (cod_tipo_titulo) REFERENCES tb_tipo_titulo (cod_tipo_titulo),
+  CONSTRAINT fk_socioXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
 
 CREATE TABLE tb_tipo_titulo (
