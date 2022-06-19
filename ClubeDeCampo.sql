@@ -14,7 +14,13 @@ CREATE TABLE tb_estado
 
 CREATE TABLE tb_exame_medico
 
-CREATE TABLE tb_local
+CREATE TABLE tb_local (
+  cod_local NUMBER(6,0) NOT NULL,
+  desc_local VARCHAR(60) NOT NULL,
+  ind_situacao CHAR(1) NOT NULL DEFAULT 'A',
+  val_locacao NUMBER(9,2) NOT NULL,
+  CONSTRAINT pk_local PRIMARY KEY(cod_local)
+);
 
 CREATE TABLE tb_local_socio
 
