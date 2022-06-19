@@ -10,7 +10,11 @@ CREATE TABLE tb_dependente
 
 CREATE TABLE tb_entrada_saida
 
-CREATE TABLE tb_estado
+CREATE TABLE tb_estado (
+  cod_estado CHAR(2) NOT NULL,
+  desc_estado VARCHAR(35) NOT NULL,
+  CONSTRAINT pk_estado PRIMARY KEY (cod_estado)
+);
 
 CREATE TABLE tb_exame_medico
 
