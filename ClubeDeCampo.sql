@@ -32,7 +32,18 @@ CREATE TABLE tb_local (
   CONSTRAINT pk_local PRIMARY KEY (cod_local)
 );
 
-CREATE TABLE tb_local_socio
+CREATE TABLE tb_local_socio (
+  cod_local_socio NUMBER(9,0) NOT NULL,
+  cod_local NUMBER(9,0) NOT NULL,
+  cod_socio NUMBER(9,0) NOT NULL,
+  dt_reserva DATE NOT NULL,
+  val_reserva NUMBER(9,2) NOT NULL,
+  desc_observacao VARCHAR2(200),
+  ind_situacao CHAR(1) DEFAULT 'A',
+  CONSTRAINT pk_local_socio PRIMARY KEY (cod_local_socio),
+  CONSTRAINT fk_local FOREIGN KEY (cod_local) REFERENCES tb_local (cod_local),
+  CONSTRAINT fk_socio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+);
 
 CREATE TABLE tb_medico
 
