@@ -24,5 +24,10 @@ CREATE TABLE tb_mensalidade
 
 CREATE TABLE tb_local_socio
 
-CREATE TABLE tb_tipo_titulo
-  
+CREATE TABLE tb_tipo_titulo (
+  cod_tipo_titulo NUMBER(6,0) NOT NULL,
+  desc_tipo_titulo VARCHAR(25) NOT NULL,
+  ind_situacao CHAR(1) NOT NULL DEFAULT 'A',
+  val_mensalidade NUMBER(9,2) NOT NULL,
+  CONSTRAINT pk_tipo_titulo PRIMARY KEY(cod_tipo_titulo)
+);
