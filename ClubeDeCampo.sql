@@ -34,7 +34,7 @@ CREATE TABLE tb_local (
 
 CREATE TABLE tb_local_socio
 
-CREATE TABLE tb_exame_medico
+CREATE TABLE tb_medico
 
 CREATE TABLE tb_mensalidade
 
@@ -57,8 +57,6 @@ CREATE TABLE tb_socio (
   CONSTRAINT fk_tipo_titulo FOREIGN KEY (cod_tipo_titulo) REFERENCES tb_tipo_titulo (cod_tipo_titulo),
   CONSTRAINT fk_cidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
-
-CREATE TABLE tb_local_socio
 
 CREATE TABLE tb_tipo_titulo (
   cod_tipo_titulo NUMBER(6,0) NOT NULL,
