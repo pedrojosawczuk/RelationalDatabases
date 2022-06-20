@@ -64,7 +64,19 @@ CREATE TABLE tb_dependente (
   CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 
-CREATE TABLE tb_entrada_saida
+CREATE TABLE tb_entrada_saida (
+  cod_entrada_saida NUMBER(9,0) NOT NULL,
+  cod_socio NUMBER(9,0),
+  cod_dependente NUMBER(9,0),
+  cod_convidado NUMBER(9,0),
+  dt_entrada_saida DATE NOT NULL,
+  desc_local VARCHAR2(15),
+  ind_tipo CHAR(1) DEFAULT 'E',
+  CONSTRAINT pk_entrada_saida PRIMARY KEY (cod_entrada_saida),
+  CONSTRAINT fk_entrada_saidaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
+  CONSTRAINT fk_entrada_saidaXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente),
+  CONSTRAINT fk_entrada_saidaXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado)
+);
 
 CREATE TABLE tb_estado (
   cod_estado CHAR(2) NOT NULL,
