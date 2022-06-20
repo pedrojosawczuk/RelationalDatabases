@@ -69,7 +69,18 @@ CREATE TABLE tb_medico (
   CONSTRAINT fk_medicoXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
 
-CREATE TABLE tb_mensalidade
+CREATE TABLE tb_mensalidade (
+  cod_mensalidade NUMBER(6,0) NOT NULL,
+  cod_socio NUMBER(6,0) NOT NULL,
+  dt_emissao DATE NOT NULL,
+  dt_vencimento DATE NOT NULL,
+  dt_pagamento DATE,
+  val_original NUMBER(9,2) NOT NULL,
+  val_titulo NUMBER(9,0) NOT NULL,
+  ind_situacao CHAR(1) DEFAULT 'A',
+  CONSTRAINT pk_mensalidade PRIMARY KEY (cod_mensalidade),
+  
+)
 
 CREATE TABLE tb_socio (
   cod_socio NUMBER(6,0) NOT NULL,
