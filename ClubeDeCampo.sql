@@ -84,7 +84,22 @@ CREATE TABLE tb_estado (
   CONSTRAINT pk_estado PRIMARY KEY (cod_estado)
 );
 
-CREATE TABLE tb_exame_medico
+CREATE TABLE tb_exame_medico (
+  cod_exame_medico NUMBER(9,0) NOT NULL,
+  cod_socio NUMBER(9,0),
+  cod_dependente NUMBER(9,0),
+  cod_convidado NUMBER(9,0),
+  cod_medico NUMBER(9,0) NOT NULL,
+  dt_exame DATE NOT NULL,
+  dias_validade NUMBER(9,0) NOT NULL,
+  ind_situacao CHAR(1) DEFAULT 'A',
+  desc_observacao VARCHAR2(300),
+  CONSTRAINT pk_exame_medico PRIMARY KEY (cod_exame_medico),
+  CONSTRAINT fk_exame_medicoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
+  CONSTRAINT fk_exame_medicoXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente),
+  CONSTRAINT fk_exame_medicoXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado),
+  CONSTRAINT fk_exame_medicoXmedico FOREIGN KEY (cod_medico) REFERENCES tb_medico (cod_medico)
+);
 
 CREATE TABLE tb_local (
   cod_local NUMBER(6,0) NOT NULL,
