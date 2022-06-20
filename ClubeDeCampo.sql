@@ -37,7 +37,18 @@ CREATE TABLE tb_conta_receber (
   CONSTRAINT fk_conta_receberXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio)
 );
 
-CREATE TABLE tb_convidado
+CREATE TABLE tb_convidado (
+  cod_convidado NUMBER(9,0) NOT NULL,
+  nome VARCHAR2(40) NOT NULL,
+  endereco VARCHAR2(35) NOT NULL,
+  celular VARCHAR2(19),
+  e_mail VARCHAR2(120),
+  dt_convidado DATE NOT NULL,
+  qt_dias NUMBER(9,0) NOT NULL,
+  cod_socio NUMBER(9,0) NOT NULL,
+  CONSTRAINT pk_convidado PRIMARY KEY (cod_convidado),
+  CONSTRAINT fk_convidadoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+);
 
 CREATE TABLE tb_dependente
 
