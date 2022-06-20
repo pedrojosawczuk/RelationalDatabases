@@ -1,4 +1,18 @@
-CREATE TABLE tb_caixa
+CREATE TABLE tb_caixa (
+  cod_caixa NUMBER(9,0) NOT NULL,
+  cod_mensalidade NUMBER(9,0),
+  cod_conta_receber NUMBER(9,0),
+  cod_local_socio NUMBER(9,0),
+  cod_socio NUMBER(9,0) NOT NULL,
+  dt_caixa DATE NOT NULL,
+  val_caixa NUMBER(9,2) NOT NULL,
+  desc_observacao VARCHAR2(100),
+  CONSTRAINT pk_caixa PRIMARY KEY (cod_caixa),
+  CONSTRAINT fk_caixaXmensalidade FOREIGN KEY (cod_mensalidade) REFERENCES tb_mensalidade (cod_mensalidade),
+  CONSTRAINT fk_caixaXconta_receber FOREIGN KEY (cod_conta_receber) REFERENCES tb_conta_receber (cod_conta_receber),
+  CONSTRAINT fk_caixaXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio),
+  CONSTRAINT fk_caixaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+);
 
 CREATE TABLE tb_cidade (
   cod_cidade NUMBER(6,0) NOT NULL,
@@ -79,8 +93,8 @@ CREATE TABLE tb_mensalidade (
   val_titulo NUMBER(9,0) NOT NULL,
   ind_situacao CHAR(1) DEFAULT 'A',
   CONSTRAINT pk_mensalidade PRIMARY KEY (cod_mensalidade),
-  
-)
+  CONSTRAINT fk_mensalidadeXSocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+);
 
 CREATE TABLE tb_socio (
   cod_socio NUMBER(6,0) NOT NULL,
