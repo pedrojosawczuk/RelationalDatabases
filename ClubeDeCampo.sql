@@ -5,6 +5,7 @@ CREATE TABLE tb_tipo_titulo (
   val_mensalidade NUMBER(9,2) NOT NULL,
   CONSTRAINT pk_tipo_titulo PRIMARY KEY (cod_tipo_titulo)
 );
+CREATE SEQUENCE sq_tipo_titulo;
 
 CREATE TABLE tb_local (
   cod_local NUMBER(6,0) NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE tb_local (
   val_locacao NUMBER(9,2) NOT NULL,
   CONSTRAINT pk_local PRIMARY KEY (cod_local)
 );
+CREATE SEQUENCE sq_local;
 
 CREATE TABLE tb_estado (
   cod_estado CHAR(2) NOT NULL,
@@ -47,6 +49,7 @@ CREATE TABLE tb_socio (
   CONSTRAINT fk_socioXtipo_titulo FOREIGN KEY (cod_tipo_titulo) REFERENCES tb_tipo_titulo (cod_tipo_titulo),
   CONSTRAINT fk_socioXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
+CREATE SEQUENCE sq_socio;
 
 CREATE TABLE tb_local_socio (
   cod_local_socio NUMBER(9,0) NOT NULL,
@@ -60,6 +63,7 @@ CREATE TABLE tb_local_socio (
   CONSTRAINT fk_local_socioXlocal FOREIGN KEY (cod_local) REFERENCES tb_local (cod_local),
   CONSTRAINT fk_local_socioXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
+CREATE SEQUENCE sq_local_socio;
 
 CREATE TABLE tb_medico (
   cod_medico NUMBER(6,0) NOT NULL,
@@ -71,6 +75,7 @@ CREATE TABLE tb_medico (
   CONSTRAINT pk_medico PRIMARY KEY (cod_medico),
   CONSTRAINT fk_medicoXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
+CREATE SEQUENCE sq_medico;
 
 
 CREATE TABLE tb_conta_receber (
@@ -87,6 +92,7 @@ CREATE TABLE tb_conta_receber (
   CONSTRAINT fk_conta_receberXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
   CONSTRAINT fk_conta_receberXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio)
 );
+CREATE SEQUENCE sq_conta_receber;
 
 CREATE TABLE tb_mensalidade (
   cod_mensalidade NUMBER(6,0) NOT NULL,
@@ -100,6 +106,7 @@ CREATE TABLE tb_mensalidade (
   CONSTRAINT pk_mensalidade PRIMARY KEY (cod_mensalidade),
   CONSTRAINT fk_mensalidadeXSocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
+CREATE SEQUENCE sq_mensalidade;
 
 CREATE TABLE tb_caixa (
   cod_caixa NUMBER(9,0) NOT NULL,
@@ -116,6 +123,7 @@ CREATE TABLE tb_caixa (
   CONSTRAINT fk_caixaXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio),
   CONSTRAINT fk_caixaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
+CREATE SEQUENCE sq_caixa;
 
 CREATE TABLE tb_convidado (
   cod_convidado NUMBER(9,0) NOT NULL,
@@ -129,6 +137,7 @@ CREATE TABLE tb_convidado (
   CONSTRAINT pk_convidado PRIMARY KEY (cod_convidado),
   CONSTRAINT fk_convidadoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
+CREATE SEQUENCE sq_convidado;
 
 CREATE TABLE tb_dependente (
   cod_dependente NUMBER(9,0) NOT NULL,
@@ -143,6 +152,7 @@ CREATE TABLE tb_dependente (
   CONSTRAINT pk_dependente PRIMARY KEY (cod_dependente),
   CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
+CREATE SEQUENCE sq_dependente;
 
 CREATE TABLE tb_entrada_saida (
   cod_entrada_saida NUMBER(9,0) NOT NULL,
@@ -157,6 +167,7 @@ CREATE TABLE tb_entrada_saida (
   CONSTRAINT fk_entrada_saidaXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente),
   CONSTRAINT fk_entrada_saidaXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado)
 );
+CREATE SEQUENCE sq_entrada_saida;
 
 CREATE TABLE tb_exame_medico (
   cod_exame_medico NUMBER(9,0) NOT NULL,
@@ -174,3 +185,4 @@ CREATE TABLE tb_exame_medico (
   CONSTRAINT fk_exame_medicoXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado),
   CONSTRAINT fk_exame_medicoXmedico FOREIGN KEY (cod_medico) REFERENCES tb_medico (cod_medico)
 );
+CREATE SEQUENCE sq_exame_medico;
