@@ -50,7 +50,19 @@ CREATE TABLE tb_convidado (
   CONSTRAINT fk_convidadoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 
-CREATE TABLE tb_dependente
+CREATE TABLE tb_dependente (
+  cod_dependente NUMBER(9,0) NOT NULL,
+  cod_socio NUMBER(9,0) NOT NULL,
+  nome VARCHAR2(40) NOT NULL,
+  celular VARCHAR2(19),
+  e_mail VARCHAR2(120),
+  dt_nascimento DATE NOT NULL,
+  sexo CHAR(1) DEFAULT 'M',
+  grau_dependencia VARCHAR2(10) DEFAULT 'FILHO',
+  ind_situacao CHAR(1) DEFAULT 'A',
+  CONSTRAINT pk_dependente PRIMARY KEY (cod_dependente),
+  CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+);
 
 CREATE TABLE tb_entrada_saida
 
