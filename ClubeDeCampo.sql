@@ -50,6 +50,7 @@ CREATE TABLE tb_socio (
   CONSTRAINT fk_socioXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
 CREATE SEQUENCE sq_socio;
+CREATE INDEX idx_socio ON tb_socio (nome);
 
 CREATE TABLE tb_local_socio (
   cod_local_socio NUMBER(9,0) NOT NULL,
@@ -64,6 +65,8 @@ CREATE TABLE tb_local_socio (
   CONSTRAINT fk_local_socioXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 CREATE SEQUENCE sq_local_socio;
+CREATE INDEX idx_local_socio1 ON tb_local_socio (cod_socio);
+CREATE INDEX idx_local_socio2 ON tb_local_socio (dt_reserva);
 
 CREATE TABLE tb_medico (
   cod_medico NUMBER(6,0) NOT NULL,
@@ -93,6 +96,8 @@ CREATE TABLE tb_conta_receber (
   CONSTRAINT fk_conta_receberXlocal_socio FOREIGN KEY (cod_local_socio) REFERENCES tb_local_socio (cod_local_socio)
 );
 CREATE SEQUENCE sq_conta_receber;
+CREATE INDEX idx_conta_receber1 ON tb_conta_receber (cod_socio);
+CREATE INDEX idx_conta_receber2 ON tb_conta_receber (dt_vencimento);
 
 CREATE TABLE tb_mensalidade (
   cod_mensalidade NUMBER(6,0) NOT NULL,
@@ -107,6 +112,7 @@ CREATE TABLE tb_mensalidade (
   CONSTRAINT fk_mensalidadeXSocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 CREATE SEQUENCE sq_mensalidade;
+CREATE INDEX idx_mensalidade ON tb_mensalidade (cod_socio);
 
 CREATE TABLE tb_caixa (
   cod_caixa NUMBER(9,0) NOT NULL,
@@ -138,6 +144,8 @@ CREATE TABLE tb_convidado (
   CONSTRAINT fk_convidadoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 CREATE SEQUENCE sq_convidado;
+CREATE INDEX idx_convidado1 ON tb_convidado (nome);
+CREATE INDEX idx_convidado2 ON tb_convidado (cod_socio);
 
 CREATE TABLE tb_dependente (
   cod_dependente NUMBER(9,0) NOT NULL,
@@ -153,6 +161,8 @@ CREATE TABLE tb_dependente (
   CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
 );
 CREATE SEQUENCE sq_dependente;
+CREATE INDEX idx_dependente1 ON tb_dependente (nome);
+CREATE INDEX idx_dependente2 ON tb_dependente (cod_socio);
 
 CREATE TABLE tb_entrada_saida (
   cod_entrada_saida NUMBER(9,0) NOT NULL,
@@ -168,6 +178,10 @@ CREATE TABLE tb_entrada_saida (
   CONSTRAINT fk_entrada_saidaXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado)
 );
 CREATE SEQUENCE sq_entrada_saida;
+CREATE INDEX idx_entrada_saida1 ON tb_entrada_saida (cod_socio);
+CREATE INDEX idx_entrada_saida2 ON tb_entrada_saida (cod_dependente);
+CREATE INDEX idx_entrada_saida3 ON tb_entrada_saida (cod_convidado);
+CREATE INDEX idx_entrada_saida4 ON tb_entrada_saida (dt_entrada_saida);
 
 CREATE TABLE tb_exame_medico (
   cod_exame_medico NUMBER(9,0) NOT NULL,
@@ -186,3 +200,8 @@ CREATE TABLE tb_exame_medico (
   CONSTRAINT fk_exame_medicoXmedico FOREIGN KEY (cod_medico) REFERENCES tb_medico (cod_medico)
 );
 CREATE SEQUENCE sq_exame_medico;
+CREATE INDEX idx_exame_medico1 ON tb_exame_medico (cod_socio);
+CREATE INDEX idx_exame_medico2 ON tb_exame_medico (cod_dependente);
+CREATE INDEX idx_exame_medico3 ON tb_exame_medico (cod_convidado);
+CREATE INDEX idx_exame_medico4 ON tb_exame_medico (cod_medico);
+CREATE INDEX idx_exame_medico5 ON tb_exame_medico (dt_exame);
