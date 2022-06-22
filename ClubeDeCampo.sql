@@ -1,3 +1,16 @@
+DROP SEQUENCE sq_tipo_titulo;
+DROP SEQUENCE sq_local;
+DROP SEQUENCE sq_socio;
+DROP SEQUENCE sq_local_socio;
+DROP SEQUENCE sq_medico;
+DROP SEQUENCE sq_conta_receber;
+DROP SEQUENCE sq_mensalidade;
+DROP SEQUENCE sq_caixa;
+DROP SEQUENCE sq_convidado;
+DROP SEQUENCE sq_dependente;
+DROP SEQUENCE sq_entrada_saida;
+DROP SEQUENCE sq_exame_medico;
+
 CREATE TABLE tb_tipo_titulo (
   cod_tipo_titulo NUMBER(6,0) NOT NULL,
   desc_tipo_titulo VARCHAR2(25) NOT NULL,
@@ -79,7 +92,6 @@ CREATE TABLE tb_medico (
   CONSTRAINT fk_medicoXcidade FOREIGN KEY (cod_cidade) REFERENCES tb_cidade (cod_cidade)
 );
 CREATE SEQUENCE sq_medico;
-
 
 CREATE TABLE tb_conta_receber (
   cod_conta_receber NUMBER(6,0) NOT NULL,
