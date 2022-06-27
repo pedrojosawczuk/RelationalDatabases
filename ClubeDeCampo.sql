@@ -243,6 +243,12 @@ CREATE TABLE tb_exame_medico (
   ind_situacao CHAR(1) DEFAULT 'A',
   desc_observacao VARCHAR2(300),
 );
+ALTER TABLE tb_exame_medico DROP CONSTRAINT pk_exame_medico;
+ALTER TABLE tb_exame_medico DROP CONSTRAINT fk_exame_medicoXsocio;
+ALTER TABLE tb_exame_medico DROP CONSTRAINT fk_exame_medicoXdependente;
+ALTER TABLE tb_exame_medico DROP CONSTRAINT fk_exame_medicoXconvidado;
+ALTER TABLE tb_exame_medico DROP CONSTRAINT fk_exame_medicoXmedico;
+
 ALTER TABLE tb_exame_medico ADD CONSTRAINT pk_exame_medico PRIMARY KEY (cod_exame_medico);
 ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
 ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente);
