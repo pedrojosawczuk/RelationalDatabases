@@ -242,15 +242,17 @@ CREATE TABLE tb_exame_medico (
   dias_validade NUMBER(9,0) NOT NULL,
   ind_situacao CHAR(1) DEFAULT 'A',
   desc_observacao VARCHAR2(300),
-  CONSTRAINT pk_exame_medico PRIMARY KEY (cod_exame_medico),
-  CONSTRAINT fk_exame_medicoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
-  CONSTRAINT fk_exame_medicoXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente),
-  CONSTRAINT fk_exame_medicoXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado),
-  CONSTRAINT fk_exame_medicoXmedico FOREIGN KEY (cod_medico) REFERENCES tb_medico (cod_medico)
 );
+ALTER TABLE tb_exame_medico ADD CONSTRAINT pk_exame_medico PRIMARY KEY (cod_exame_medico);
+ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
+ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente);
+ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado);
+ALTER TABLE tb_exame_medico ADD CONSTRAINT fk_exame_medicoXmedico FOREIGN KEY (cod_medico) REFERENCES tb_medico (cod_medico);
+
 CREATE SEQUENCE sq_exame_medico
   START WITH 1
   INCREMENT BY 1;
+
 CREATE INDEX idx_exame_medico1 ON tb_exame_medico (cod_socio);
 CREATE INDEX idx_exame_medico2 ON tb_exame_medico (cod_dependente);
 CREATE INDEX idx_exame_medico3 ON tb_exame_medico (cod_convidado);
