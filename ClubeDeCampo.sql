@@ -220,6 +220,11 @@ CREATE TABLE tb_entrada_saida (
   desc_local VARCHAR2(15),
   ind_tipo CHAR(1) DEFAULT 'E',
 );
+ALTER TABLE tb_entrada_saida DROP CONSTRAINT pk_entrada_saida;
+ALTER TABLE tb_entrada_saida DROP CONSTRAINT fk_entrada_saidaXsocio;
+ALTER TABLE tb_entrada_saida DROP CONSTRAINT fk_entrada_saidaXdependente;
+ALTER TABLE tb_entrada_saida DROP CONSTRAINT fk_entrada_saidaXconvidado;
+
 ALTER TABLE tb_entrada_saida ADD CONSTRAINT pk_entrada_saida PRIMARY KEY (cod_entrada_saida);
 ALTER TABLE tb_entrada_saida ADD CONSTRAINT fk_entrada_saidaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
 ALTER TABLE tb_entrada_saida ADD CONSTRAINT fk_entrada_saidaXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente);
