@@ -201,10 +201,11 @@ CREATE TABLE tb_dependente (
   dt_nascimento DATE NOT NULL,
   sexo CHAR(1) DEFAULT 'M',
   grau_dependencia VARCHAR2(10) DEFAULT 'FILHO',
-  ind_situacao CHAR(1) DEFAULT 'A',
-  CONSTRAINT pk_dependente PRIMARY KEY (cod_dependente),
-  CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio)
+  ind_situacao CHAR(1) DEFAULT 'A'
 );
+ALTER TABLE tb_dependente ADD CONSTRAINT pk_dependente PRIMARY KEY (cod_dependente);
+ALTER TABLE tb_dependente ADD CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
+
 CREATE SEQUENCE sq_dependente
   START WITH 1
   INCREMENT BY 1;
