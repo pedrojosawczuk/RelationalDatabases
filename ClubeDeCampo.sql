@@ -219,11 +219,12 @@ CREATE TABLE tb_entrada_saida (
   dt_entrada_saida DATE NOT NULL,
   desc_local VARCHAR2(15),
   ind_tipo CHAR(1) DEFAULT 'E',
-  CONSTRAINT pk_entrada_saida PRIMARY KEY (cod_entrada_saida),
-  CONSTRAINT fk_entrada_saidaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio),
-  CONSTRAINT fk_entrada_saidaXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente),
-  CONSTRAINT fk_entrada_saidaXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado)
 );
+ALTER TABLE tb_entrada_saida ADD CONSTRAINT pk_entrada_saida PRIMARY KEY (cod_entrada_saida);
+ALTER TABLE tb_entrada_saida ADD CONSTRAINT fk_entrada_saidaXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
+ALTER TABLE tb_entrada_saida ADD CONSTRAINT fk_entrada_saidaXdependente FOREIGN KEY (cod_dependente) REFERENCES tb_dependente (cod_dependente);
+ALTER TABLE tb_entrada_saida ADD CONSTRAINT fk_entrada_saidaXconvidado FOREIGN KEY (cod_convidado) REFERENCES tb_convidado (cod_convidado);
+
 CREATE SEQUENCE sq_entrada_saida
   START WITH 1
   INCREMENT BY 1;
