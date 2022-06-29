@@ -203,6 +203,9 @@ CREATE TABLE tb_dependente (
   grau_dependencia VARCHAR2(10) DEFAULT 'FILHO',
   ind_situacao CHAR(1) DEFAULT 'A'
 );
+ALTER TABLE tb_dependente DROP CONSTRAINT pk_dependente;
+ALTER TABLE tb_dependente DROP CONSTRAINT fk_dependenteXsocio;
+
 ALTER TABLE tb_dependente ADD CONSTRAINT pk_dependente PRIMARY KEY (cod_dependente);
 ALTER TABLE tb_dependente ADD CONSTRAINT fk_dependenteXsocio FOREIGN KEY (cod_socio) REFERENCES tb_socio (cod_socio);
 
