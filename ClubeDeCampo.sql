@@ -222,7 +222,7 @@ CREATE TABLE tb_entrada_saida (
   cod_convidado NUMBER(9,0),
   dt_entrada_saida DATE NOT NULL,
   desc_local VARCHAR2(15),
-  ind_tipo CHAR(1) DEFAULT 'E',
+  ind_tipo CHAR(1) DEFAULT 'E'
 );
 ALTER TABLE tb_entrada_saida DROP CONSTRAINT pk_entrada_saida;
 ALTER TABLE tb_entrada_saida DROP CONSTRAINT fk_entrada_saidaXsocio;
