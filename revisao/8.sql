@@ -1,0 +1,1 @@
+UPDATE tb_cadastro SET cpf = '123.456.789-00' WHERE codigo = 1;

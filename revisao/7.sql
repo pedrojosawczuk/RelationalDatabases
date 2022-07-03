@@ -1,0 +1,1 @@
+INSERT INTO tb_cadastro (cod_cadastro, nome, cod_cidade, celular, cpf, e_mail, endereco, rendimentos) VALUES (sq_cadastro.nextval, 'Utfpr Medianeira', 1, '(45) 99988-1234', '00000000', 'utfpr@utfpr.edu.br', 'Av. Brasil', '0,00');
