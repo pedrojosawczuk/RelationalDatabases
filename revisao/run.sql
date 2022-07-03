@@ -1,3 +1,4 @@
+@ 'c:\temp\revisao\0.sql';
 @ 'c:\temp\revisao\1.sql';
 @ 'c:\temp\revisao\2.sql';
 @ 'c:\temp\revisao\3.sql';
