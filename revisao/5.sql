@@ -1,0 +1,1 @@
+CREATE INDEX idx_cadastro ON tb_cadastro (cpf);

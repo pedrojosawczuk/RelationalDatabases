@@ -1,0 +1,1 @@
+ALTER TABLE tb_pedido DROP COLUMN dt_previsao_entrega;
